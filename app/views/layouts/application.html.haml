@@ -1,0 +1,56 @@
+!!! 5
+%html
+  %head
+    %title aeksco-rails
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    .flash-region{ 'app-region': 'flash' }
+
+    %nav.cm-navbar.navbar.bg-inverse.navbar-dark
+      .container-fluid
+        %a.navbar-brand{ href: '#' }
+          .ps-logo
+          -# Protosmith
+          %i.fa.fa-fw.fa-spinner.fa-spin{ id: 'loading', style: 'display:none;' }
+
+        %ul.nav.navbar-nav
+          %li.nav-item.cursor-pointer
+            %a.nav-item.nav-link{ href: '#configs'} Configs
+
+          %li.nav-item.cursor-pointer
+            %a.nav-item.nav-link{ href: '#configs/new'} Upload
+
+          %li.nav-item.cursor-pointer
+            %a.nav-item.nav-link{ href: '#about'} About
+
+        - if current_user
+
+          %ul.nav.navbar-nav.pull-right
+            %li.nav-item.cursor-pointer
+              %a.nav-link{ href: 'http://google.com' }= current_user.username
+            %li.nav-item.cursor-pointer
+              = link_to('Logout', destroy_user_session_path, class: 'nav-link')
+
+        - else
+
+          %ul.nav.navbar-nav.pull-right
+            %li.nav-item.cursor-pointer
+              = link_to('Sign Up', new_user_registration_path, class: 'nav-link')
+            %li.nav-item.cursor-pointer
+              = link_to('Log In', new_user_session_path, class: 'nav-link')
+
+    %div.hide.hidden{ 'app-region': 'header' }
+    .hide.sub-header{ 'app-region': 'breadcrumbs' }
+    %div{ 'app-region': 'main', style: 'margin-top:5rem;' }
+    %div{ 'app-region': 'modal' }
+
+    -# Bootstraps client w/ current user
+    - if current_user
+      %script{ id: 'USER_FROM_SERVER' }
+        window.USER = { _id: "#{current_user.id.to_s}", username: "#{current_user.username}" }
+
+    .container
+      = yield

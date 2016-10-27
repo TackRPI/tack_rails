@@ -1,12 +1,16 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "rails/test_unit/railtie"
+require "sprockets/railtie" # Uncomment this line for Rails 3.1+
+# require "active_resource/railtie" # Comment this line for Rails 4.0+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module TackRails
+module AekscoRails
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -20,7 +24,18 @@ module TackRails
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # Sets HAML and default template engine
+    config.generators do |g|
+      g.template_engine :haml
+      g.assets = false
+      g.decorator = false
+      g.helper = false
+      g.integration_test = false
+      g.jbuilder = false
+      g.mailer = false
+      g.migration = false
+      g.factory_girl = false
+    end
+
   end
 end
