@@ -60,9 +60,4 @@ class User
     self.email == 'aeksco@gmail.com'
   end
 
-  def subjects
-    # self.subject_permissions.pluck(:subject)
-    return Subject.in(_id: self.subject_permissions.pluck(:subject_id))
-  end
-
 end

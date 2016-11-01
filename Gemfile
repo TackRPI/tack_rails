@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Core
 gem 'rails', '~> 4.2'
-gem 'mongoid', '~> 4.0.0'
+gem 'mongoid', '~> 4.0.2'
 # gem 'mongoid-slug'
 gem 'draper', '~> 1.3'
 gem 'kaminari'
