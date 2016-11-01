@@ -9,6 +9,7 @@ gem 'kaminari'
 gem 'redis-rails', '~> 4'
 gem 'rails_admin'
 gem 'resque'
+gem 'rack-cors', :require => 'rack/cors'
 
 # User Authentication
 gem 'devise'
