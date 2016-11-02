@@ -12,17 +12,18 @@ class ContactMethodsController < CrudController
     create_params[:created_by] = current_user.id.to_s
     create_params[:updated_by] = current_user.id.to_s
 
-    method_type = create_params.delete(:method_type)
-
-    case method_type
-    when ContactMethod::EMAIL
+    # Picks ContactMethod subclass
+    # TODO - should this be broken out into a separate class?
+    # At the very least a separate method
+    if create_params[:email]
       @item = EmailAddress.new(create_params)
 
-    when ContactMethod::PHONE
+    elsif create_params[:phone]
       @item = PhoneNumber.new(create_params)
 
-    when ContactMethod::ADDRESS
+    elsif create_params[:country]
       @item = Address.new(create_params)
+
     else
       # TODO - throw exception
       binding.pry
@@ -30,7 +31,7 @@ class ContactMethodsController < CrudController
 
     @item.save
 
-    # respond_with(@item)
+    # respond_with(@item) # TODO - why isn't this working??
     render template_prefix + '/show'
 
   end
