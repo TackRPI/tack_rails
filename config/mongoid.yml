@@ -1,5 +1,12 @@
 # Ansible managed: /Users/aeksco/github/aeksco-rails/railsbox/ansible/roles/mongodb/templates/mongoid.yml.j2 modified on 2016-04-14 17:58:54 by aeksco on Alexanders-MBP
 
+production:
+  sessions:
+    default:
+      database: mongoid
+      hosts:
+        - localhost:27017
+
 development:
   sessions:
     default:

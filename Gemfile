@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 
 # Core
 gem 'rails', '~> 4.2'
-gem 'mongoid', '~> 4.0.0'
+gem 'mongoid', '~> 4.0.2'
 # gem 'mongoid-slug'
 gem 'draper', '~> 1.3'
 gem 'kaminari'
 gem 'redis-rails', '~> 4'
 gem 'rails_admin'
 gem 'resque'
+gem 'rack-cors', :require => 'rack/cors'
 
 # User Authentication
 gem 'devise'

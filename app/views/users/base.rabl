@@ -1,1 +1,1 @@
-attributes :_id, :username, :email, :subjects
+attributes :_id, :username, :email
