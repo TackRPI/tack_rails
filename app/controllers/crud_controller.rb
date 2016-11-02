@@ -26,7 +26,9 @@ class CrudController < ApplicationController
     @item = model.new(create_params)
     @item.save
 
-    respond_with(@item)
+    # respond_with(@item) # TODO - why isn't this working?
+    render template_prefix + '/show'
+
   end
 
   def update
