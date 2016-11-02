@@ -45,8 +45,7 @@ class User
   # # # # #
 
   # Attributes
-  field :username,  type: String
-  field :roles,     type: Array
+  field :display_name,  type: String
 
   # Validations
   # TODO validates at least ONE letter
@@ -55,6 +54,7 @@ class User
   # Relations
   has_many :contact_methods, class_name: 'ContactMethod'
   has_many :share_profiles, class_name: 'ShareProfile'
+  has_many :contacts, class_name: 'Contacts'
 
   def is_admin? # TODO - this should leverage user.roles
     self.email == 'aeksco@gmail.com'

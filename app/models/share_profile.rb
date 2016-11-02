@@ -40,7 +40,7 @@ class ShareProfile
       cache = {
         pref:   c.pref,
         label:  c.label,
-        value:  c.value,
+        value:  c.value, # TODO - add value method to ContactMethod
       }
 
       methods << cache
