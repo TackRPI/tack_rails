@@ -45,7 +45,8 @@ class User
   # # # # #
 
   # Attributes
-  # field :display_name,  type: String # TODO - add display name
+  field :username, type: String
+  # field :display_name, type: String # TODO - add display name?
 
   # Validations
   # TODO validates at least ONE letter
