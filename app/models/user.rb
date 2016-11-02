@@ -45,16 +45,16 @@ class User
   # # # # #
 
   # Attributes
-  field :display_name,  type: String
+  # field :display_name,  type: String # TODO - add display name
 
   # Validations
   # TODO validates at least ONE letter
-  validates :username, presence: true, uniqueness: true, length: { minimum: 2, maximum: 24 }
+  # validates :username, presence: true, uniqueness: true, length: { minimum: 2, maximum: 24 }
 
   # Relations
   has_many :contact_methods, class_name: 'ContactMethod'
   has_many :share_profiles, class_name: 'ShareProfile'
-  has_many :contacts, class_name: 'Contacts'
+  has_many :contacts, class_name: 'Contact'
 
   def is_admin? # TODO - this should leverage user.roles
     self.email == 'aeksco@gmail.com'

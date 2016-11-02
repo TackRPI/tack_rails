@@ -9,7 +9,11 @@
 # # # # # # # # # # # # # # # # # # # #
 
 # Users
-User.create({ username: 'aeksco', email: 'aeksco@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
-User.create({ username: 'tvcog', email: 'aekschwartzberg@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
+User.create({ email: 'aeksco@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
+User.create({ email: 'aekschwartzberg@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
+User.create({ email: 'alex@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
+User.create({ email: 'blake@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
+User.create({ email: 'dylan@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
+User.create({ email: 'ranjit@gmail.com', password: 'topsecret', password_confirmation: 'topsecret' })
 
 # # # # # # # # # # # # # # # # # # # #

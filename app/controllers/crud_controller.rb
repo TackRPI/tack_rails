@@ -3,12 +3,9 @@ class CrudController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_item, only: [:show, :update, :destroy]
 
-  respond_to :json
-
-  # TODO - wat?
-  skip_before_filter :verify_authenticity_token, only: [:create, :update]
-
-  before_filter :authenticate_request!
+  respond_to :json # TODO - application controller
+  skip_before_filter :verify_authenticity_token, only: [:create, :update] # TODO - wat?
+  before_filter :authenticate_request! # TODO - application controller?
 
   def show
     @item.decorate() if @item.respond_to? :decorate
