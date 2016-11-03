@@ -49,6 +49,10 @@ class ShareProfile
     # Updates self with cached
     self.cached = methodCache
 
+    # Creates UpdateDispatch
+    update = UpdateDispatch.create({ label: 'Alex\'s ' + self.label, cache: methodCache })
+
+
   end
 
 end

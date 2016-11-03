@@ -55,7 +55,7 @@ class User
   # Relations
   has_many :contact_methods, class_name: 'ContactMethod'
   has_many :share_profiles, class_name: 'ShareProfile'
-  has_many :contacts, class_name: 'Contact'
+  has_many :update_dispatches, class_name: 'UpdateDispatch'
 
   def is_admin? # TODO - this should leverage user.roles
     self.email == 'aeksco@gmail.com'

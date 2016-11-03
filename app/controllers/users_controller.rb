@@ -7,10 +7,6 @@ class UsersController < ApplicationController
     render 'users/show'
   end
 
-  def create
-    # TODO - register new user
-  end
-
   private
 
     def item_params

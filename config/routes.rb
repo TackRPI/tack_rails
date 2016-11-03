@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # API
   resources :contact_methods, only: RESTFUL
   resources :share_profiles, only: RESTFUL
-  resources :contacts, only: [:index]
+  resources :update_dispatches, only: [:index]
 
   # # # # #
 
