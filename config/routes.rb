@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'users',      to: 'users#index'
   get 'users/:id',  to: 'users#show'
   post 'auth_user', to: 'authentication#authenticate_user'
+  post 'auth/register', to: 'authentication#register'
 
   # # # # #
 
