@@ -28,6 +28,10 @@ class ContactMethodsController < CrudController
     elsif create_params[:country]
       @item = Address.new(create_params)
 
+    # Social
+    elsif create_params[:username]
+      @item = SocialAccount.new(create_params)
+
     # ELSE
     else
       # TODO - throw exception
@@ -43,7 +47,7 @@ class ContactMethodsController < CrudController
 
     def item_params
       # params.require(...)
-      params.permit(:label, :pref, :email, :phone, :streetAddress, :locality, :region, :postalCode, :country)
+      params.permit(:label, :pref, :email, :phone, :username, :service, :streetAddress, :locality, :region, :postalCode, :country)
     end
 
     def model
