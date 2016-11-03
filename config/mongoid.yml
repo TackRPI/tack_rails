@@ -3,21 +3,21 @@
 production:
   sessions:
     default:
-      database: mongoid
+      database: tack
       hosts:
         - localhost:27017
 
 development:
   sessions:
     default:
-      database: mongoid
+      database: tack
       hosts:
         - localhost:27017
 
 test:
   sessions:
     default:
-      database: mongoid_test
+      database: tack_test
       hosts:
         - localhost:27017
       options:

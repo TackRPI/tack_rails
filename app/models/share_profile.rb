@@ -17,11 +17,7 @@ class ShareProfile
   # Validations
   validates :label, presence: true, uniqueness: true # TODO - uniqueness per-user
 
-  # def dispatch_updates
-  #   Resque.enqueue(ShareProfileCacheJob, self.id.to_s)
-  #   return
-  # end
-
+  # Caches Contact Methods
   def cache_contact_methods
 
     # Return if no contact_methods are present
@@ -40,7 +36,7 @@ class ShareProfile
       cache = {
         pref:   c.pref,
         label:  c.label,
-        value:  c.value,
+        value:  c.value, # TODO - is this how we want to handle this? We might want a 'toCache' method rather than 'value' on each model
       }
 
       methods << cache
@@ -52,6 +48,10 @@ class ShareProfile
 
     # Updates self with cached
     self.cached = methodCache
+
+    # Creates UpdateDispatch
+    update = UpdateDispatch.create({ label: 'Alex\'s ' + self.label, cache: methodCache })
+
 
   end
 

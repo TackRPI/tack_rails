@@ -24,4 +24,8 @@ class Address < ContactMethod
     self.formatted = "#{self.streetAddress}\n#{self.locality}, #{self.region} #{self.postalCode}\n#{self.country}"
   end
 
+  def value
+    return self.formatted
+  end
+
 end

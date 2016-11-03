@@ -8,3 +8,6 @@ attributes :email, :if => lambda { |m| m.email? }
 
 # Phone
 attributes :phone, :if => lambda { |m| m.phone? }
+
+# Social
+attributes :username, :service, :if => lambda { |m| m.username? }

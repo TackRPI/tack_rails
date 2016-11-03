@@ -25,13 +25,6 @@ class ApplicationController < ActionController::Base
     render json: { errors: ['Not Authenticated'] }, status: :unauthorized # TODO - DRY this up.
   end
 
-  def ensure_admin
-    unless @current_user.is_admin?
-      render json: { errors: ['Not Authenticated'] }, status: :unauthorized # TODO - DRY this up.
-      return
-    end
-  end
-
   private
 
   def http_token

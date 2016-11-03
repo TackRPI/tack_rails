@@ -6,4 +6,8 @@ class PhoneNumber < ContactMethod
   # Validations
   validates :phone, presence: true, uniqueness: true # TODO - custom validation
 
+  def value
+    return self.phone
+  end
+
 end
