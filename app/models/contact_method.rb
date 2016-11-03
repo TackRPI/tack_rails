@@ -3,12 +3,6 @@ class ContactMethod
   include Mongoid::Timestamps
   include CreatedAndUpdatedBy
 
-  # Subclass constants
-  # TODO - abstract elsewhere
-  EMAIL   = 'email'
-  PHONE   = 'phone'
-  ADDRESS = 'address'
-
   # Callbacks
   after_save :update_share_profiles
 
@@ -23,6 +17,8 @@ class ContactMethod
   # Validations
   validates :label,  presence: true
 
+  # TODO - update share profiles!
+  # !!!!!!!
   def update_share_profiles
     puts 'update share profiles here'
     puts self.share_profile_ids

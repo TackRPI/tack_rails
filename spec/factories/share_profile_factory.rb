@@ -2,8 +2,9 @@
 # This will guess the Battery class
 FactoryGirl.define do
 
-  factory :battery do
-    name 'CM Battery 0000'
+  factory :share_profile do
+    label '0000-0001'
+    cache {}
   end
 
 end
