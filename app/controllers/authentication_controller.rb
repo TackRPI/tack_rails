@@ -13,17 +13,23 @@ class AuthenticationController < ApplicationController
   end
 
   # POST /auth/register
+  # TODO - this doesn't fail when parameters are invalid
   def register
+
+    # Return error if params aren't defined
+    if !params[:email] || !params[:password] || !params[:password_confirmation]
+      render json: { errors: true }, status: :bad_request
+    end
 
     # New User
     user = User.new({ email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation] })
     user.save()
 
-    # If errors...
-    if !!user.errors.messages
+    # If no errors...
+    if user.errors.messages.empty?
       render json: payload(user)
     else
-      render json: { errors: user.errors.messages }
+      render json: { errors: user.errors.messages }, status: :bad_request
     end
 
   end

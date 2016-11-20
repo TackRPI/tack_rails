@@ -10,23 +10,18 @@ Rails.application.routes.draw do
     mount Resque::Server.new, :at => '/resque'                  # Resque Server mount
   end
 
-  # API
+  # API Routes
   resources :contact_methods, only: RESTFUL
   resources :share_profiles, only: RESTFUL
   resources :update_dispatches, only: [:index]
 
-  # # # # #
-
-  # TODO - revise this to handle JSON routes for Registration, Password Reset, etc.
-  # TODO - clean this up
+  # Routes for User model & authentication
   devise_for :users
-  get 'users',      to: 'users#index'
-  get 'users/:id',  to: 'users#show'
   post 'auth_user', to: 'authentication#authenticate_user'
   post 'auth/register', to: 'authentication#register'
 
   # # # # #
 
-  root to: "home#index"
+  root to: "home#index" # TODO - need root route?
 
 end

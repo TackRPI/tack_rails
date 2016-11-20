@@ -38,8 +38,7 @@ class CrudController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    respond_with(@item)
+    render json: { destroyed: @item.destroy }
   end
 
   private
