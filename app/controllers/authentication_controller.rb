@@ -5,7 +5,7 @@ class AuthenticationController < ApplicationController
   # POST /auth_user
   def authenticate_user
     user = User.find_for_database_authentication(email: params[:email])
-    if user.valid_password?(params[:password])
+    if user && user.valid_password?(params[:password])
       render json: payload(user)
     else
       render json: {errors: ['Invalid Username/Password']}, status: :unauthorized
@@ -34,8 +34,10 @@ class AuthenticationController < ApplicationController
 
   end
 
+  # Private method responsible for building User payload
+  # Payload contains authentication token used
+  # by the client for all requests
   private
-
   def payload(user)
     return nil unless user and user.id
     {
