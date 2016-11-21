@@ -6,12 +6,17 @@ class EmailAddress < ContactMethod
   # Validations
   validates :email, presence: true, uniqueness: { scope: :created_by } # TODO - custom validation for email
 
-  def value
-    return self.email
-  end
-
   def cache_id
     return :email
+  end
+
+  def to_cache
+    cache = {
+      pref:   self.pref,
+      label:  self.label,
+      email:  self.email
+    }
+    return cache
   end
 
 end

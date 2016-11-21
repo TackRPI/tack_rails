@@ -25,12 +25,22 @@ class Address < ContactMethod
     self.formatted = "#{self.streetAddress}\n#{self.locality}, #{self.region} #{self.postalCode}\n#{self.country}"
   end
 
-  def value
-    return self.formatted
-  end
-
   def cache_id
     return :address
+  end
+
+  def to_cache
+    cache = {
+      pref:           self.pref,
+      label:          self.label,
+      formatted:      self.formatted,
+      streetAddress:  self.streetAddress,
+      locality:       self.locality,
+      region:         self.region,
+      postalCode:     self.postalCode,
+      country:        self.country
+    }
+    return cache
   end
 
 end

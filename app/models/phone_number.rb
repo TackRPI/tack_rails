@@ -14,4 +14,13 @@ class PhoneNumber < ContactMethod
     return :phone
   end
 
+  def to_cache
+    cache = {
+      pref:   self.pref,
+      label:  self.label,
+      phone:  self.phone
+    }
+    return cache
+  end
+
 end

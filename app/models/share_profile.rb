@@ -42,15 +42,9 @@ class ShareProfile
     self.contact_methods.each do |c|
 
       # Builds cache for each ContactMethod
-      cache = {
-        pref:   c.pref,
-        label:  c.label,
-        value:  c.value, # TODO - is this how we want to handle this? We might want a 'toCache' method rather than 'value' on each model
-      }
-
       # Assignes to correct array
       # uses cache_id method on ContactMethod subclasses
-      methodCache[c.cache_id] << cache
+      methodCache[c.cache_id] << c.to_cache()
 
     end
 

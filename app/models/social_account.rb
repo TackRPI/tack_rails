@@ -8,12 +8,18 @@ class SocialAccount < ContactMethod
   validates :username, presence: true
   validates :service, presence: true
 
-  def value
-    return self.username
-  end
-
   def cache_id
     return :social
+  end
+
+  def to_cache
+    cache = {
+      pref:       self.pref,
+      label:      self.label,
+      username:   self.username,
+      service:    self.service
+    }
+    return cache
   end
 
 end
