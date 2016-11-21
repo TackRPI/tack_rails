@@ -24,6 +24,10 @@ class ShareProfile
   validates :label, presence: true, uniqueness: { scope: :created_by }
   validates :created_by, presence: true
 
+  def created_by_name
+    self.created_by.display_name
+  end
+
   # Caches Contact Methods
   def cache_contact_methods
 
