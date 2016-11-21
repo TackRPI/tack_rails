@@ -1,3 +1,4 @@
+# TODO - document
 class ShareProfile
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -30,25 +31,22 @@ class ShareProfile
     end
 
     # Array of methods
-    # TODO - this will be 1 array per ContactMethod Type
-    methodCache = Hash.new()
-    methods = Array.new()
+    methodCache = {
+      phone:    Array.new(),
+      email:    Array.new(),
+      address:  Array.new(),
+      social:   Array.new()
+    }
 
     # Iterates over contact methods
     self.contact_methods.each do |c|
 
-      cache = {
-        pref:   c.pref,
-        label:  c.label,
-        value:  c.value, # TODO - is this how we want to handle this? We might want a 'toCache' method rather than 'value' on each model
-      }
-
-      methods << cache
+      # Builds cache for each ContactMethod
+      # Assignes to correct array
+      # uses cache_id method on ContactMethod subclasses
+      methodCache[c.cache_id] << c.to_cache()
 
     end
-
-    # Assigns methods to cache hash
-    methodCache[:methods] = methods
 
     # Updates self with cached
     self.cached = methodCache
@@ -56,16 +54,14 @@ class ShareProfile
 
   end
 
-  # TODO - this should happen in a Resque task
   # Builds and UpdateDispatch
   # TODO - this should happen in a Resque task that accepts the user and the share profile
   def build_update_dispatches
-    puts 'TODO - build update dispatches after this is saved / updated'
-    # x = FindOrCreate
     self.linked_users.each do |u|
-      UpdateDispatch.create({ user: u, label: created_by.display_name + ' - ' + self.label, cache: self.cached, share_profile: self })
+      update = UpdateDispatch.find_or_create_by({ user: u, share_profile: self })
+      update.set({ label: created_by.display_name + ' - ' + self.label, cache: self.cached })
+      update.save()
     end
-
   end
 
 end
