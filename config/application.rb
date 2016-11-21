@@ -44,6 +44,11 @@ module TackRails
         origins 'localhost:8080'
         resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]
       end
+
+      allow do
+        origins 'hello.tack.host'
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]
+      end
     end
 
   end

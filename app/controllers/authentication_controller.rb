@@ -53,7 +53,7 @@ class AuthenticationController < ApplicationController
   # Registration parameters helpfer function
   # plucks only desired attributes
   def register_params
-    params.permit(:email, :password, :password_confirmation, :username, :displayName)
+    params.permit(:email, :password, :password_confirmation, :username, :display_name)
   end
 
 end
