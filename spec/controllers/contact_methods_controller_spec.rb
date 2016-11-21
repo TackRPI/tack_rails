@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BatteriesController, type: :controller do
+RSpec.describe ContactMethodsController, type: :controller do
 
   describe 'GET #index' do
     it 'responds successfully with an HTTP 200 status code' do
@@ -13,19 +13,17 @@ RSpec.describe BatteriesController, type: :controller do
   describe 'GET #show' do
 
     before(:each) do
-      @battery = create(:battery)
+      @contactMethod = create(:contact_method)
     end
 
     it 'responds successfully with an HTTP 200 status code' do
-      # battery = create(:battery)
-      get :show, id: @battery.id.to_s
+      get :show, id: @contactMethod.id.to_s
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
     it "renders the show template" do
-      # battery = create(:battery)
-      get :show, id: @battery.id.to_s
+      get :show, id: @contactMethod.id.to_s
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
