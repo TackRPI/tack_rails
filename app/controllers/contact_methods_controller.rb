@@ -10,7 +10,6 @@ class ContactMethodsController < CrudController
   def create
     create_params = item_params
     create_params[:created_by] = current_user.id.to_s
-    create_params[:updated_by] = current_user.id.to_s
 
     # Picks ContactMethod subclass
     # TODO - should this be broken out into a separate class?

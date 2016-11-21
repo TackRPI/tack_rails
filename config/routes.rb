@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :share_profiles, only: RESTFUL
   resources :update_dispatches, only: [:index]
 
+  post 'share_profiles/:id/share', to: 'share_profiles#share'
+
   # Routes for User model & authentication
   devise_for :users
   post 'auth_user', to: 'authentication#authenticate_user'

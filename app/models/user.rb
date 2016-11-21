@@ -1,3 +1,4 @@
+# TODO - document
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -36,8 +37,8 @@ class User
 
   # Validations
   validates :email, presence: true, uniqueness: true # TODO - validate email pattern
-  validates :username, presence: true, uniqueness: true, length: { minimum: 2, maximum: 24 }
-  validates :display_name, presence: true, length: { minimum: 2, maximum: 24 }
+  validates :username, presence: true, uniqueness: true, length: { minimum: 4, maximum: 24 }
+  validates :display_name, presence: true, length: { minimum: 4, maximum: 24 }
 
   # Relations
   has_many :contact_methods, class_name: 'ContactMethod'

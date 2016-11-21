@@ -1,7 +1,8 @@
+# TODO - document
 class ContactMethod
   include Mongoid::Document
   include Mongoid::Timestamps
-  include CreatedAndUpdatedBy
+  include CreatedBy
 
   # Callbacks
   after_save :update_share_profiles
@@ -11,14 +12,12 @@ class ContactMethod
   field :pref,  type: Boolean, default: false
 
   # Relations
-  belongs_to :user, class_name: 'User'
   has_and_belongs_to_many :share_profiles, class_name: 'ShareProfile', inverse_of: nil
 
   # Validations
   validates :label,  presence: true
 
   # TODO - update share profiles!
-  # !!!!!!!
   def update_share_profiles
     puts 'update share profiles here'
     puts self.share_profile_ids

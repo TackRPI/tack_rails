@@ -1,7 +1,7 @@
 class ShareProfile
   include Mongoid::Document
   include Mongoid::Timestamps
-  include CreatedAndUpdatedBy
+  include CreatedBy
 
   # Callbacks
   before_save :cache_contact_methods
@@ -11,7 +11,6 @@ class ShareProfile
   field :cached, type: Hash
 
   # Relations
-  belongs_to  :user, class_name: 'User'
   has_and_belongs_to_many :contact_methods, class_name: 'ContactMethod', inverse_of: nil
 
   # Validations
@@ -50,9 +49,12 @@ class ShareProfile
     self.cached = methodCache
 
     # Creates UpdateDispatch
-    update = UpdateDispatch.create({ label: 'Alex\'s ' + self.label, cache: methodCache })
+    # update = UpdateDispatch.create({ label: 'Alex\'s ' + self.label, cache: methodCache })
 
+  end
 
+  def send_update_dispatch_to(user_id) # TODO - include sender information
+    update = UpdateDispatch.create({ user_id: user_id, label: 'Alex\'s ' + self.label, cache: self.cached })
   end
 
 end

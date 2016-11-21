@@ -21,7 +21,6 @@ class CrudController < ApplicationController
     # TODO - this should be revisited
     create_params = item_params
     create_params[:created_by] = current_user.id.to_s
-    create_params[:updated_by] = current_user.id.to_s
 
     @item = model.new(create_params)
     @item.save

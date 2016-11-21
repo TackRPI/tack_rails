@@ -1,3 +1,4 @@
+# TODO - document
 class UpdateDispatch
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -5,6 +6,6 @@ class UpdateDispatch
   field :label, type: String
   field :cache, type: Hash
 
-  has_one :user, class_name: 'User'
+  belongs_to :user, class_name: 'User'
 
 end
