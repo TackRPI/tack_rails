@@ -1,5 +1,7 @@
 require 'jwt'
 
+# JSON Web Token middleware
+# Encodes and decodes tokens with 'jwt' gem
 class JsonWebToken
 
   def self.encode(payload)

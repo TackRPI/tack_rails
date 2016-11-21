@@ -1,8 +1,14 @@
-require "#{Rails.root}/lib/json_web_token" # TODO - cleaner way to require this?
 
+# Requires JSONWebToken middleware
+require "#{Rails.root}/lib/json_web_token"
+
+# AuthenticationController
+# Manages user authentication and registration
 class AuthenticationController < ApplicationController
 
   # POST /auth_user
+  # Returns authentication payload for user/password combination
+  # Returns error if user not defined, or if password invalid
   def authenticate_user
     user = User.find_for_database_authentication(email: params[:email])
     if user && user.valid_password?(params[:password])
@@ -13,22 +19,20 @@ class AuthenticationController < ApplicationController
   end
 
   # POST /auth/register
-  # TODO - this doesn't fail when parameters are invalid
+  # Returns authentication payload for new users who sucessfully register
+  # Returns error if registration parameters are missing or invalid
   def register
 
-    # Return error if params aren't defined
-    if !params[:email] || !params[:password] || !params[:password_confirmation]
-      render json: { errors: true }, status: :bad_request
-    end
-
     # New User
-    user = User.new({ email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation] })
+    user = User.new(register_params)
     user.save()
 
     # If no errors...
     if user.errors.messages.empty?
+      # Returns user authentication payload
       render json: payload(user)
     else
+      # Returns error messages
       render json: { errors: user.errors.messages }, status: :bad_request
     end
 
@@ -44,6 +48,12 @@ class AuthenticationController < ApplicationController
       auth_token: JsonWebToken.encode({ user_id: user.id.to_s }),
       user: { id: user.id.to_s, email: user.email }
     }
+  end
+
+  # Registration parameters helpfer function
+  # plucks only desired attributes
+  def register_params
+    params.permit(:email, :password, :password_confirmation, :username, :displayName)
   end
 
 end
