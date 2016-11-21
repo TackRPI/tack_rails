@@ -1,13 +1,16 @@
-require "#{Rails.root}/lib/json_web_token" # TODO - cleaner way to require this?
+# Imports the json_web_token helper class defined in /lib/
+require "#{Rails.root}/lib/json_web_token"
 
+
+# ApplicationController class definition
+# defines authenticate_request! and helper methods
+# used in all controllers to manage authenitcated users
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  # protect_from_forgery with: :exception
 
+  # Application-wide JSON-only responses
   respond_to :json
 
-  # Taken from https://www.sitepoint.com/introduction-to-using-jwt-in-rails/
+  # Referenced: https://www.sitepoint.com/introduction-to-using-jwt-in-rails/
   attr_reader :current_user
 
   protected
@@ -15,17 +18,20 @@ class ApplicationController < ActionController::Base
   def authenticate_request!
 
     unless user_id_in_token?
-      render json: { errors: ['Not Authenticated'] }, status: :unauthorized # TODO - DRY this up.
-      return
+      return unauthorized_error()
     end
 
     @current_user = User.find(auth_token[:user_id])
 
   rescue JWT::VerificationError, JWT::DecodeError
-    render json: { errors: ['Not Authenticated'] }, status: :unauthorized # TODO - DRY this up.
+    return unauthorized_error()
   end
 
   private
+
+  def unauthorized_error
+    render json: { errors: ['Not Authenticated'] }, status: :unauthorized
+  end
 
   def http_token
     @http_token ||= if request.headers['Authorization'].present?

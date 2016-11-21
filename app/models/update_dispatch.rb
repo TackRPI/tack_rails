@@ -1,4 +1,6 @@
-# TODO - document
+# UpdateDispatch model definition
+# Manages UpdateDispatch attributes, relations, and validations
+# Any associated actions with this model occur in its related model class definitions
 class UpdateDispatch
   include Mongoid::Document
   include Mongoid::Timestamps

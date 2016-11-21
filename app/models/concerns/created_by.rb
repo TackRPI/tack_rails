@@ -1,4 +1,5 @@
-# TODO - document
+# CreatedBy concern definition
+# Abstraction used by the ContactMethod class definition to define its user relation
 module CreatedBy
   extend ActiveSupport::Concern
 

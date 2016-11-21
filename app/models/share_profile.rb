@@ -1,4 +1,7 @@
-# TODO - document
+
+# ShareProfile model definition
+# Manages ShareProfile attributes, relations, and validations
+# Includes before_save and after_save callbacks to manage background operations
 class ShareProfile
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -18,9 +21,8 @@ class ShareProfile
   has_many :update_dispatches, class_name: 'UpdateDispatch'
 
   # Validations
-  validates :label, presence: true, uniqueness: { scope: :created_by } # TODO - document created_by scope
+  validates :label, presence: true, uniqueness: { scope: :created_by }
   validates :created_by, presence: true
-  # TODO - any other validations?
 
   # Caches Contact Methods
   def cache_contact_methods
@@ -54,12 +56,11 @@ class ShareProfile
 
   end
 
-  # Builds and UpdateDispatch
-  # TODO - this should happen in a Resque task that accepts the user and the share profile
+  # Builds and UpdateDispatch models from ShareProfile (self)
   def build_update_dispatches
     self.linked_users.each do |u|
       update = UpdateDispatch.find_or_create_by({ user: u, share_profile: self })
-      update.set({ label: created_by.display_name + ' - ' + self.label, cache: self.cached })
+      update.set({ label: '(Tack) ' + created_by.display_name, cache: self.cached })
       update.save()
     end
   end

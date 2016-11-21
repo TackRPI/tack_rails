@@ -7,17 +7,19 @@ RESTFUL = [:index, :show, :create, :update, :destroy]
 # Build application's routes
 Rails.application.routes.draw do
 
-  # TODO - Admin Only, test
-  # TODO - remove this?
-  scope '/admin' do
-    mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin' # RailsAdmin mount
-    mount Resque::Server.new, :at => '/resque'                  # Resque Server mount
+  # Includes RailsAdmin interface
+  # Development-only
+  if Rails.env.development?
+    scope '/admin' do
+      mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin' # RailsAdmin mount
+      mount Resque::Server.new, :at => '/resque'                  # Resque Server mount
+    end
   end
 
   # API Routes
   resources :contact_methods, only: RESTFUL
   resources :share_profiles, only: RESTFUL
-  resources :update_dispatches, only: [:index]
+  resources :update_dispatches, only: [:index, :destroy]
   post 'share', to: 'share_profiles#share'
 
   # Routes for User model & authentication
