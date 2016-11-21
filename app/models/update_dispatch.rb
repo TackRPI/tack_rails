@@ -9,8 +9,10 @@ class UpdateDispatch
 
   # Relations
   belongs_to :user, class_name: 'User'
+  belongs_to :share_profile, class_name: 'ShareProfile'
 
   # Validations
-  # TODO
+  validates :label, presence: true
+  validates :user, presence: true, uniqueness: { scope: :share_profile }
 
 end

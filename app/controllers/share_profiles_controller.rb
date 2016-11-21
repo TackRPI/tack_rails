@@ -1,8 +1,6 @@
 # TODO - document
 class ShareProfilesController < CrudController
 
-  before_action :set_item, only: [:show, :share, :update, :destroy]
-
   def index
     @items = ShareProfile.where({ created_by: @current_user.id })
     render 'share_profiles/index'
@@ -20,16 +18,27 @@ class ShareProfilesController < CrudController
   def share
 
     # Queries User by Tack Username
-    # TODO - should use 'find by username' method
-    user = User.where({ email: params[:email] }).first
+    item = ShareProfile.find(params[:share_profile_id])
+    user = User.where({ username: params[:username] }).first # TODO - should use 'find by username' method
 
     # If user exists
-    if user && user.id
-      @item.send_update_dispatch_to(user.id)
-      render json: {success: true}
+    if item && user && user.id
+
+      # Adds user to linked users
+      item.linked_users << user
+
+      # Updates ShareProfile
+      if item.save()
+        render json: {success: true}
+      else
+        render json: {errors: item.errors.messages }
+      end
+
+    # Throws error if Username or ShareProfile don't exist
     else
       render json: {errors: ['Invalid Tack Username']}, status: :unauthorized
     end
+
   end
 
   private

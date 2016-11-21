@@ -1,10 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # # # # # # # # # # # # # # # # # # # #
 
@@ -20,13 +15,13 @@ ranjit = User.create({ email: 'ranjit@gmail.com', password: 'topsecret', passwor
 alex_email = EmailAddress.create({
   label:      'GMail',
   email:      'alex@gmail.com',
-  created_by: alex.id.to_s
+  created_by: alex
 })
 
 alex_phone = PhoneNumber.create({
   label:      'Cell',
   phone:      '555-555-5555',
-  created_by: alex.id.to_s
+  created_by: alex
 })
 
 alex_address = Address.create({
@@ -36,19 +31,21 @@ alex_address = Address.create({
   region:         'CA',
   postalCode:     '12345',
   country:        'USA',
-  created_by:     alex.id.to_s
+  created_by:     alex
 })
 
 email_and_phone = ShareProfile.create({
-  label:              'Email & Phone',
-  created_by:         alex.id.to_s,
-  contact_method_ids: [alex_email.id.to_s, alex_phone.id.to_s]
+  label:            'Email & Phone',
+  created_by:       alex,
+  contact_methods:  [alex_email, alex_phone],
+  linked_users:     [dylan, ranjit]
 })
 
 phone_and_address = ShareProfile.create({
-  label:              'Phone & Address',
-  created_by:         alex.id.to_s,
-  contact_method_ids: [alex_phone.id.to_s, alex_address.id.to_s]
+  label:            'Phone & Address',
+  created_by:       alex,
+  contact_methods:  [alex_phone, alex_address],
+  linked_users:     [blake, ranjit]
 })
 
 # # # # # # # # # # # # # # # # # # # #
@@ -57,13 +54,13 @@ phone_and_address = ShareProfile.create({
 blake_email = EmailAddress.create({
   label:      'GMail',
   email:      'blake@gmail.com',
-  created_by: blake.id.to_s
+  created_by: blake
 })
 
 blake_phone = PhoneNumber.create({
   label:      'Cell',
   phone:      '555-555-5555',
-  created_by: blake.id.to_s
+  created_by: blake
 })
 
 blake_address = Address.create({
@@ -73,19 +70,21 @@ blake_address = Address.create({
   region:         'CA',
   postalCode:     '12345',
   country:        'USA',
-  created_by:     blake.id.to_s
+  created_by:     blake
 })
 
 email_and_phone = ShareProfile.create({
-  label:              'Email & Phone',
-  created_by:         blake.id.to_s,
-  contact_method_ids: [blake_email.id.to_s, blake_phone.id.to_s]
+  label:            'Email & Phone',
+  created_by:       blake,
+  contact_methods:  [blake_email, blake_phone],
+  linked_users:     [ranjit, alex]
 })
 
 phone_and_address = ShareProfile.create({
-  label:              'Phone & Address',
-  created_by:         blake.id.to_s,
-  contact_method_ids: [blake_phone.id.to_s, blake_address.id.to_s]
+  label:            'Phone & Address',
+  created_by:       blake,
+  contact_methods:  [blake_phone, blake_address],
+  linked_users:     [dylan, alex]
 })
 
 # # # # # # # # # # # # # # # # # # # #
@@ -94,13 +93,13 @@ phone_and_address = ShareProfile.create({
 dylan_email = EmailAddress.create({
   label:      'GMail',
   email:      'dylan@gmail.com',
-  created_by: dylan.id.to_s
+  created_by: dylan
 })
 
 dylan_phone = PhoneNumber.create({
   label:      'Cell',
   phone:      '555-555-5555',
-  created_by: dylan.id.to_s
+  created_by: dylan
 })
 
 dylan_address = Address.create({
@@ -110,19 +109,21 @@ dylan_address = Address.create({
   region:         'CA',
   postalCode:     '12345',
   country:        'USA',
-  created_by:     dylan.id.to_s
+  created_by:     dylan
 })
 
 email_and_phone = ShareProfile.create({
-  label:              'Email & Phone',
-  created_by:         dylan.id.to_s,
-  contact_method_ids: [dylan_email.id.to_s, dylan_phone.id.to_s]
+  label:            'Email & Phone',
+  created_by:       dylan,
+  contact_methods:  [dylan_email, dylan_phone],
+  linked_users:     [ranjit, blake]
 })
 
 phone_and_address = ShareProfile.create({
-  label:              'Phone & Address',
-  created_by:         dylan.id.to_s,
-  contact_method_ids: [dylan_phone.id.to_s, dylan_address.id.to_s]
+  label:            'Phone & Address',
+  created_by:       dylan,
+  contact_methods:  [dylan_phone, dylan_address],
+  linked_users:     [alex, blake]
 })
 
 # # # # # # # # # # # # # # # # # # # #
@@ -131,13 +132,13 @@ phone_and_address = ShareProfile.create({
 ranjit_email = EmailAddress.create({
   label:      'GMail',
   email:      'ranjit@gmail.com',
-  created_by: ranjit.id.to_s
+  created_by: ranjit
 })
 
 ranjit_phone = PhoneNumber.create({
   label:      'Cell',
   phone:      '555-555-5555',
-  created_by: ranjit.id.to_s
+  created_by: ranjit
 })
 
 ranjit_address = Address.create({
@@ -147,21 +148,19 @@ ranjit_address = Address.create({
   region:         'CA',
   postalCode:     '12345',
   country:        'USA',
-  created_by:     ranjit.id.to_s
+  created_by:     ranjit
 })
 
 email_and_phone = ShareProfile.create({
-  label:              'Email & Phone',
-  created_by:         ranjit.id.to_s,
-  contact_method_ids: [ranjit_email.id.to_s, ranjit_phone.id.to_s],
-  linked_users:       [blake, dylan]
+  label:            'Email & Phone',
+  created_by:       ranjit,
+  contact_methods:  [ranjit_email, ranjit_phone],
+  linked_users:     [blake, dylan]
 })
 
 phone_and_address = ShareProfile.create({
-  label:              'Phone & Address',
-  created_by:         ranjit.id.to_s,
-  contact_method_ids: [ranjit_phone.id.to_s, ranjit_address.id.to_s],
-  linked_users:       [alex, dylan]
+  label:            'Phone & Address',
+  created_by:       ranjit,
+  contact_methods:  [ranjit_phone, ranjit_address],
+  linked_users:     [alex, dylan]
 })
-
-binding.pry
