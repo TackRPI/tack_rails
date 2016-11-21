@@ -1,3 +1,6 @@
+# SocialAccount class definition
+# Subclassed from ContactMethod
+# Manages SocialAccount-specific attributes and helper methods
 class SocialAccount < ContactMethod
 
   # Attributes

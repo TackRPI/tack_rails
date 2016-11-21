@@ -1,4 +1,6 @@
-# TODO - document
+# Address class definition
+# Subclassed from ContactMethod
+# Manages Address-specific attributes and helper methods
 class Address < ContactMethod
 
   # Callbacks
@@ -21,6 +23,7 @@ class Address < ContactMethod
   validates :country, presence: true
 
   # Sets formatted attribute
+  # Complete address as a single string
   def set_formatted
     self.formatted = "#{self.streetAddress}\n#{self.locality}, #{self.region} #{self.postalCode}\n#{self.country}"
   end

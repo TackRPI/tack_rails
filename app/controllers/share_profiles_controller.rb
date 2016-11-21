@@ -1,4 +1,5 @@
-# TODO - document
+# ShareProfilesController class definition
+# Provides basis CRUD for managing ShareProfile database records
 class ShareProfilesController < CrudController
 
   def index
@@ -7,19 +8,13 @@ class ShareProfilesController < CrudController
   end
 
   # POST /share_profiles/:id/share
-  # Creates an UpdateDispatch for ShareProfile
-  # to the User supplied by the 'username' parameter
-  # Simply adds a user the the ShareProfile's 'shared_with' attribute
-  # Which can easily be removed later by a standard update - or perhaps un-share?
-
-  # ON THE CLIENT
-  # Viewing UpdateDispatches
-  # "X shared some info with you!" -> "Share back?"
+  # Adds a user the the ShareProfile's 'shared_with' attribute
+  # Used in the 'AddByTackUsername' scenario
   def share
 
     # Queries User by Tack Username
     item = ShareProfile.find(params[:share_profile_id])
-    user = User.where({ username: params[:username] }).first # TODO - should use 'find by username' method
+    user = User.where({ username: params[:username] }).first
 
     # If user exists
     if item && user && user.id

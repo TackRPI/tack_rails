@@ -1,4 +1,6 @@
-# TODO - document
+# ContactMethod model definition
+# Manages ContactMethod attributes, relations, and validations
+# Includes before_save and after_destroy callbacks to manage background operations
 class ContactMethod
   include Mongoid::Document
   include Mongoid::Timestamps

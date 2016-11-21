@@ -1,3 +1,6 @@
+# PhoneNumber class definition
+# Subclassed from ContactMethod
+# Manages PhoneNumber-specific attributes and helper methods
 class PhoneNumber < ContactMethod
 
   # Attributes
@@ -5,10 +8,6 @@ class PhoneNumber < ContactMethod
 
   # Validations
   validates :phone, presence: true, uniqueness: { scope: :created_by } # TODO - custom validation
-
-  def value
-    return self.phone
-  end
 
   def cache_id
     return :phone
