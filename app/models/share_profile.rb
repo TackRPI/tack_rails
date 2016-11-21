@@ -21,7 +21,7 @@ class ShareProfile
   has_many :update_dispatches, class_name: 'UpdateDispatch'
 
   # Validations
-  validates :label, presence: true, uniqueness: { scope: :created_by } # TODO - document created_by scope
+  validates :label, presence: true, uniqueness: { scope: :created_by }
   validates :created_by, presence: true
 
   # Caches Contact Methods

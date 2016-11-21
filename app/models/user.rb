@@ -38,7 +38,7 @@ class User
   field :display_name, type: String
 
   # Validations
-  validates :email, presence: true, uniqueness: true # TODO - validate email pattern
+  validates :email, presence: true, uniqueness: true, format: { with: /@/ }
   validates :username, presence: true, uniqueness: true, length: { minimum: 4, maximum: 24 }
   validates :display_name, presence: true, length: { minimum: 4, maximum: 24 }
 

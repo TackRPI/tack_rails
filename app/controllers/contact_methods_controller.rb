@@ -30,14 +30,11 @@ class ContactMethodsController < CrudController
       @item = Address.new(create_params)
 
     # Social
-    elsif create_params[:username]
-      @item = SocialAccount.new(create_params)
-
-    # ELSE
     else
-      # TODO - throw exception
+      @item = SocialAccount.new(create_params)
     end
 
+    # Saves model and returns JSON
     @item.save
     render template_prefix + '/show'
 

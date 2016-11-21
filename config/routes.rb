@@ -7,11 +7,13 @@ RESTFUL = [:index, :show, :create, :update, :destroy]
 # Build application's routes
 Rails.application.routes.draw do
 
-  # TODO - Admin Only, test
-  # TODO - remove this?
-  scope '/admin' do
-    mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin' # RailsAdmin mount
-    mount Resque::Server.new, :at => '/resque'                  # Resque Server mount
+  # Includes RailsAdmin interface
+  # Development-only
+  if Rails.env.development?
+    scope '/admin' do
+      mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin' # RailsAdmin mount
+      mount Resque::Server.new, :at => '/resque'                  # Resque Server mount
+    end
   end
 
   # API Routes

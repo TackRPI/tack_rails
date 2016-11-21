@@ -7,8 +7,7 @@ class EmailAddress < ContactMethod
   field :email, type: String
 
   # Validations
-  validates :email, presence: true, uniqueness: { scope: :created_by }
-  validates_format_of :email, :with => /@/
+  validates :email, presence: true, uniqueness: { scope: :created_by }, format: { with: /@/ }
 
   def cache_id
     return :email
