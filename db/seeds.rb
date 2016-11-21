@@ -153,13 +153,15 @@ ranjit_address = Address.create({
 email_and_phone = ShareProfile.create({
   label:              'Email & Phone',
   created_by:         ranjit.id.to_s,
-  contact_method_ids: [ranjit_email.id.to_s, ranjit_phone.id.to_s]
+  contact_method_ids: [ranjit_email.id.to_s, ranjit_phone.id.to_s],
+  linked_users:       [blake, dylan]
 })
 
 phone_and_address = ShareProfile.create({
   label:              'Phone & Address',
   created_by:         ranjit.id.to_s,
-  contact_method_ids: [ranjit_phone.id.to_s, ranjit_address.id.to_s]
+  contact_method_ids: [ranjit_phone.id.to_s, ranjit_address.id.to_s],
+  linked_users:       [alex, dylan]
 })
 
 binding.pry

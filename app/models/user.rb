@@ -42,7 +42,8 @@ class User
 
   # Relations
   has_many :contact_methods, class_name: 'ContactMethod'
-  has_many :share_profiles, class_name: 'ShareProfile'
+  has_many :share_profiles, class_name: 'ShareProfile', inverse_of: :created_by
+  has_and_belongs_to_many :linked_profiles, class_name: 'ShareProfile', inverse_of: :linked_users
   has_many :update_dispatches, class_name: 'UpdateDispatch'
 
 end

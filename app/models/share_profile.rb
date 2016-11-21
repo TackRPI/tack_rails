@@ -1,7 +1,7 @@
 class ShareProfile
   include Mongoid::Document
   include Mongoid::Timestamps
-  include CreatedBy
+  # include CreatedBy
 
   # Callbacks
   before_save :cache_contact_methods
@@ -12,6 +12,8 @@ class ShareProfile
 
   # Relations
   has_and_belongs_to_many :contact_methods, class_name: 'ContactMethod'
+  belongs_to :created_by, class_name: 'User', inverse_of: :share_profiles
+  has_and_belongs_to_many :linked_users, class_name: 'User', inverse_of: :linked_profiles
 
   # Validations
   validates :label, presence: true, uniqueness: { scope: :created_by } # TODO - document created_by scope
@@ -53,8 +55,19 @@ class ShareProfile
 
   end
 
-  def send_update_dispatch_to(user_id) # TODO - include sender information
-    update = UpdateDispatch.create({ user_id: user_id, label: 'Alex\'s ' + self.label, cache: self.cached })
+  # TODO - this should happen in a Resque task
+  # Builds and UpdateDispatch
+  # TODO - this should happen in a Resque task that accepts the user and the share profile
+  def send_update_dispatch_to(user)
+
+    # Collects User attributes
+    user_id       = user.id
+    display_name  = user.display_name
+
+    # Creates UpdateDispatch
+    update = UpdateDispatch.create({ user_id: user_id, label: display_name + ' - ' + self.label, cache: self.cached })
+    return update
+
   end
 
 end
