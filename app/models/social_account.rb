@@ -12,4 +12,8 @@ class SocialAccount < ContactMethod
     return self.username
   end
 
+  def cache_id
+    return :social
+  end
+
 end

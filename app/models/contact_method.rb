@@ -6,6 +6,7 @@ class ContactMethod
 
   # Callbacks
   after_save :update_share_profiles
+  after_destroy :update_share_profiles
 
   # Attributes
   field :label, type: String
@@ -17,11 +18,9 @@ class ContactMethod
   # Validations
   validates :label, presence: true
 
-  # TODO - update share profiles!
   def update_share_profiles
-    puts 'update share profiles here'
-    puts self.share_profile_ids
-    return
+    self.share_profiles.each { |p| p.save() }
+    return true
   end
 
 end

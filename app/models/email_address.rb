@@ -10,4 +10,8 @@ class EmailAddress < ContactMethod
     return self.email
   end
 
+  def cache_id
+    return :email
+  end
+
 end

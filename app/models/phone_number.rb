@@ -10,4 +10,8 @@ class PhoneNumber < ContactMethod
     return self.phone
   end
 
+  def cache_id
+    return :phone
+  end
+
 end

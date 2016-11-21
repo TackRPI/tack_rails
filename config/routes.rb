@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resources :contact_methods, only: RESTFUL
   resources :share_profiles, only: RESTFUL
   resources :update_dispatches, only: [:index]
-
   post 'share', to: 'share_profiles#share'
 
   # Routes for User model & authentication

@@ -1,3 +1,4 @@
+# TODO - document
 class Address < ContactMethod
 
   # Callbacks
@@ -26,6 +27,10 @@ class Address < ContactMethod
 
   def value
     return self.formatted
+  end
+
+  def cache_id
+    return :address
   end
 
 end
