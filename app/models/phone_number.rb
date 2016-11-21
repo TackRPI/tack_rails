@@ -4,7 +4,7 @@ class PhoneNumber < ContactMethod
   field :phone, type: String
 
   # Validations
-  validates :phone, presence: true, uniqueness: true # TODO - custom validation
+  validates :phone, presence: true, uniqueness: { scope: :created_by } # TODO - custom validation
 
   def value
     return self.phone

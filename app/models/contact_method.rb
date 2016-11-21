@@ -12,10 +12,10 @@ class ContactMethod
   field :pref,  type: Boolean, default: false
 
   # Relations
-  has_and_belongs_to_many :share_profiles, class_name: 'ShareProfile', inverse_of: nil
+  has_and_belongs_to_many :share_profiles, class_name: 'ShareProfile'
 
   # Validations
-  validates :label,  presence: true
+  validates :label, presence: true
 
   # TODO - update share profiles!
   def update_share_profiles

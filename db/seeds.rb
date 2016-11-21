@@ -35,6 +35,7 @@ alex_address = Address.create({
   locality:       'Los Angeles',
   region:         'CA',
   postalCode:     '12345',
+  country:        'USA',
   created_by:     alex.id.to_s
 })
 
@@ -42,6 +43,12 @@ email_and_phone = ShareProfile.create({
   label:              'Email & Phone',
   created_by:         alex.id.to_s,
   contact_method_ids: [alex_email.id.to_s, alex_phone.id.to_s]
+})
+
+phone_and_address = ShareProfile.create({
+  label:              'Phone & Address',
+  created_by:         alex.id.to_s,
+  contact_method_ids: [alex_phone.id.to_s, alex_address.id.to_s]
 })
 
 # # # # # # # # # # # # # # # # # # # #
@@ -65,7 +72,20 @@ blake_address = Address.create({
   locality:       'Los Angeles',
   region:         'CA',
   postalCode:     '12345',
+  country:        'USA',
   created_by:     blake.id.to_s
+})
+
+email_and_phone = ShareProfile.create({
+  label:              'Email & Phone',
+  created_by:         blake.id.to_s,
+  contact_method_ids: [blake_email.id.to_s, blake_phone.id.to_s]
+})
+
+phone_and_address = ShareProfile.create({
+  label:              'Phone & Address',
+  created_by:         blake.id.to_s,
+  contact_method_ids: [blake_phone.id.to_s, blake_address.id.to_s]
 })
 
 # # # # # # # # # # # # # # # # # # # #
@@ -89,7 +109,20 @@ dylan_address = Address.create({
   locality:       'Los Angeles',
   region:         'CA',
   postalCode:     '12345',
+  country:        'USA',
   created_by:     dylan.id.to_s
+})
+
+email_and_phone = ShareProfile.create({
+  label:              'Email & Phone',
+  created_by:         dylan.id.to_s,
+  contact_method_ids: [dylan_email.id.to_s, dylan_phone.id.to_s]
+})
+
+phone_and_address = ShareProfile.create({
+  label:              'Phone & Address',
+  created_by:         dylan.id.to_s,
+  contact_method_ids: [dylan_phone.id.to_s, dylan_address.id.to_s]
 })
 
 # # # # # # # # # # # # # # # # # # # #
@@ -113,6 +146,20 @@ ranjit_address = Address.create({
   locality:       'Los Angeles',
   region:         'CA',
   postalCode:     '12345',
+  country:        'USA',
   created_by:     ranjit.id.to_s
 })
 
+email_and_phone = ShareProfile.create({
+  label:              'Email & Phone',
+  created_by:         ranjit.id.to_s,
+  contact_method_ids: [ranjit_email.id.to_s, ranjit_phone.id.to_s]
+})
+
+phone_and_address = ShareProfile.create({
+  label:              'Phone & Address',
+  created_by:         ranjit.id.to_s,
+  contact_method_ids: [ranjit_phone.id.to_s, ranjit_address.id.to_s]
+})
+
+binding.pry

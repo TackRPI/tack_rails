@@ -11,10 +11,10 @@ class ShareProfile
   field :cached, type: Hash
 
   # Relations
-  has_and_belongs_to_many :contact_methods, class_name: 'ContactMethod', inverse_of: nil
+  has_and_belongs_to_many :contact_methods, class_name: 'ContactMethod'
 
   # Validations
-  validates :label, presence: true, uniqueness: true # TODO - uniqueness per-user
+  validates :label, presence: true, uniqueness: { scope: :created_by } # TODO - document created_by scope
 
   # Caches Contact Methods
   def cache_contact_methods
