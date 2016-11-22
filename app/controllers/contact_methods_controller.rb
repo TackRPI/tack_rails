@@ -10,7 +10,9 @@ class ContactMethodsController < CrudController
   end
 
   # Creates ContactMethod subclass
-  # TODO - this should be abstracted into a separate class definition
+  # TODO - this should be abstracted into a separate class
+  # that defines a factory pattern that will return the correct
+  # ContactMethod subclass based off the parameters
   def create
     create_params = item_params
     create_params[:created_by] = current_user.id.to_s
