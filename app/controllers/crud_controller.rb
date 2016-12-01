@@ -3,6 +3,8 @@
 # used by ContactMethodsController and ShareProfilesController
 class CrudController < ApplicationController
 
+  respond_to :json
+
   before_action :set_item, only: [:show, :update, :destroy]
   before_filter :authenticate_request!
   skip_before_filter :verify_authenticity_token, only: [:create, :update]

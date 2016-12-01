@@ -1,6 +1,7 @@
 # UpdateDispatchesController class definition
 # Sends a User's UpdateDispatches to the client
 class UpdateDispatchesController < ApplicationController
+  respond_to :json
   before_filter :authenticate_request!
 
   def index
