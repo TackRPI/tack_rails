@@ -1,5 +1,5 @@
 
-# This will guess the Battery class
+# User mock factory
 FactoryGirl.define do
 
   factory :user do

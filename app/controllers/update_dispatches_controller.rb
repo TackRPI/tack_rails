@@ -8,4 +8,9 @@ class UpdateDispatchesController < ApplicationController
     render 'update_dispatches/index'
   end
 
+  def destroy
+    @item = UpdateDispatch.find(params[:id])
+    render json: { destroyed: @item.destroy }
+  end
+
 end

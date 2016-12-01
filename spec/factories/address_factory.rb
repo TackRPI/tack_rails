@@ -1,4 +1,5 @@
 
+# Address mock factory
 FactoryGirl.define do
 
   factory :address do

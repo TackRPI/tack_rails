@@ -2,6 +2,7 @@
 ## Directory Structure Breakdown
 
 ###### Note: some un-touched (auto-generated) top-level directories have been ommitted for brevity.
+
 ##### Top Level
 - **app/** --- Rails application files
 - **config/** --- Rails and MongoDB configuration

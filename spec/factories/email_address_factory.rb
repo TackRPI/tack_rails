@@ -1,4 +1,5 @@
 
+# EmailAddress mock factory
 FactoryGirl.define do
 
   factory :email_address do
