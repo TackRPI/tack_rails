@@ -1,4 +1,5 @@
 
+# ContactMethod mock factory
 FactoryGirl.define do
 
   factory :contact_method do

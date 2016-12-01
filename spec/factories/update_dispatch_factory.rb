@@ -1,5 +1,5 @@
 
-# This will guess the Battery class
+# UpdateDispatch mock factory
 FactoryGirl.define do
 
   factory :update_dispatch do

@@ -33,6 +33,10 @@ RSpec.configure do |config|
   #     RSpec.describe UsersController, :type => :controller do
   #       # ...
   #     end
+
+  # Transactional fixtures
+  config.use_transactional_fixtures = true
+
   #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs

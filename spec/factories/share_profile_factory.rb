@@ -1,5 +1,5 @@
 
-# This will guess the Battery class
+# ShareProfile mock factory
 FactoryGirl.define do
 
   factory :share_profile do
