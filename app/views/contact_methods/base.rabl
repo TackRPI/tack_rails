@@ -1,4 +1,5 @@
-attributes :_id, :pref, :label, :errors
+node(:_id) { |item| item._id.to_s }
+attributes :pref, :label, :errors
 
 # Address
 attributes :formatted, :streetAddress, :locality, :region, :postalCode, :country, :if => lambda { |m| m.formatted? }
