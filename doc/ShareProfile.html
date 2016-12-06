@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: ShareProfile
+  
+    &mdash; Documentation by YARD 0.9.5
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "ShareProfile";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (S)</a> &raquo;
+    
+    
+    <span class="title">ShareProfile</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <iframe id="search_frame" src="class_list.html"></iframe>
+
+      <div id="content"><h1>Class: ShareProfile
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ShareProfile</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Mongoid::Document, Mongoid::Timestamps</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>app/models/share_profile.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>ShareProfile model definition Manages ShareProfile attributes, relations,
+and validations Includes before_save and after_save callbacks to manage
+background operations</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_update_dispatches-instance_method" title="#build_update_dispatches (instance method)">#<strong>build_update_dispatches</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Builds and UpdateDispatch models from ShareProfile (self).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache_contact_methods-instance_method" title="#cache_contact_methods (instance method)">#<strong>cache_contact_methods</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Caches Contact Methods.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#created_by_name-instance_method" title="#created_by_name (instance method)">#<strong>created_by_name</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="build_update_dispatches-instance_method">
+  
+    #<strong>build_update_dispatches</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Builds and UpdateDispatch models from ShareProfile (self)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66
+67
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/share_profile.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_build_update_dispatches'>build_update_dispatches</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_linked_users'>linked_users</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_u'>u</span><span class='op'>|</span>
+    <span class='id identifier rubyid_update'>update</span> <span class='op'>=</span> <span class='const'>UpdateDispatch</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_by'>find_or_create_by</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>user:</span> <span class='id identifier rubyid_u'>u</span><span class='comma'>,</span> <span class='label'>share_profile:</span> <span class='kw'>self</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_update'>update</span><span class='period'>.</span><span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>label:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(Tack) </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_created_by'>created_by</span><span class='period'>.</span><span class='id identifier rubyid_display_name'>display_name</span><span class='comma'>,</span> <span class='label'>cache:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cached'>cached</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_update'>update</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cache_contact_methods-instance_method">
+  
+    #<strong>cache_contact_methods</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Caches Contact Methods</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/share_profile.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cache_contact_methods'>cache_contact_methods</span>
+
+  <span class='comment'># Return if no contact_methods are present
+</span>  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_contact_methods'>contact_methods</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='kw'>return</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Array of methods
+</span>  <span class='id identifier rubyid_methodCache'>methodCache</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>phone:</span>    <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>email:</span>    <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>address:</span>  <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>social:</span>   <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+
+  <span class='comment'># Iterates over contact methods
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_contact_methods'>contact_methods</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+
+    <span class='comment'># Builds cache for each ContactMethod
+</span>    <span class='comment'># Assignes to correct array
+</span>    <span class='comment'># uses cache_id method on ContactMethod subclasses
+</span>    <span class='id identifier rubyid_methodCache'>methodCache</span><span class='lbracket'>[</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_cache_id'>cache_id</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_to_cache'>to_cache</span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='kw'>end</span>
+
+  <span class='comment'># Updates self with cached
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cached'>cached</span> <span class='op'>=</span> <span class='id identifier rubyid_methodCache'>methodCache</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="created_by_name-instance_method">
+  
+    #<strong>created_by_name</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/share_profile.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_created_by_name'>created_by_name</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_created_by'>created_by</span><span class='period'>.</span><span class='id identifier rubyid_display_name'>display_name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Tue Dec  6 14:03:07 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.5 (ruby-2.2.3).
+</div>
+
+    </div>
+  </body>
+</html>
