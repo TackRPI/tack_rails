@@ -64,7 +64,7 @@ class ShareProfile
   def build_update_dispatches
     self.linked_users.each do |u|
       update = UpdateDispatch.find_or_create_by({ user: u, share_profile: self })
-      update.set({ label: '(Tack) ' + created_by.display_name, cache: self.cached })
+      update.set({ label: created_by.display_name, cache: self.cached })
       update.save()
     end
   end
