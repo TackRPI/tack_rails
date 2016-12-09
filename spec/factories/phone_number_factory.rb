@@ -4,7 +4,7 @@ FactoryGirl.define do
 
   factory :phone_number do
     label 'Home Phone'
-    phone '5555555555'
+    phone '5556667777'
   end
 
 end
